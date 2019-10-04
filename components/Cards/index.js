@@ -34,9 +34,9 @@ function newCard(array) {
   imgContainer.appendChild(img);
 
   // set content
-  headline.textContent = array[1].headline;
-  img.src = array[1].authorPhoto;
-  authorName.textContent = `By ${array[1].authorName}`;
+  headline.textContent = array[0].headline;
+  img.src = array[0].authorPhoto;
+  authorName.textContent = `By ${array[0].authorName}`;
 
   // apply styles
   card.classList.add("card");
@@ -47,7 +47,7 @@ function newCard(array) {
   return card;
 }
 
-console.log(newCard);
+// console.log(newCard);
 
 const cardsEntryPoint = document.querySelector(".cards-container");
 
@@ -58,8 +58,9 @@ axios
     const newCardData = response.data.articles;
     const newArray = Object.entries(newCardData);
     console.log(newArray);
-    newArray[1].forEach(item => {
-      cardsEntryPoint.appendChild(newCard(item));
+    const modifiedArray = newArray.forEach(item => {
+      const modArray = item[1];
+      cardsEntryPoint.appendChild(newCard(modArray));
     });
   })
   .catch(error => {
