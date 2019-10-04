@@ -34,9 +34,9 @@ function newCard(array) {
   imgContainer.appendChild(img);
 
   // set content
-  headline.textContent = array[0].headline;
-  img.src = array[0].authorPhoto;
-  authorName.textContent = `By ${array[0].authorName}`;
+  headline.textContent = array.headline;
+  img.src = array.authorPhoto;
+  authorName.textContent = `By ${array.authorName}`;
 
   // apply styles
   card.classList.add("card");
@@ -56,12 +56,31 @@ axios
   .then(response => {
     console.log(response);
     const newCardData = response.data.articles;
-    const newArray = Object.entries(newCardData);
-    console.log(newArray);
-    const modifiedArray = newArray.forEach(item => {
-      const modArray = item[1];
-      cardsEntryPoint.appendChild(newCard(modArray));
+    newCardData.javascript.forEach(item => {
+      cardsEntryPoint.appendChild(newCard(item));
     });
+    newCardData.javascript.forEach(item => {
+      cardsEntryPoint.appendChild(newCard(item));
+    });
+    newCardData.bootstrap.forEach(item => {
+      cardsEntryPoint.appendChild(newCard(item));
+    });
+    newCardData.technology.forEach(item => {
+      cardsEntryPoint.appendChild(newCard(item));
+    });
+    newCardData.jquery.forEach(item => {
+      cardsEntryPoint.appendChild(newCard(item));
+    });
+    newCardData.node.forEach(item => {
+      cardsEntryPoint.appendChild(newCard(item));
+    });
+
+    // const newArray = Object.entries(newCardData);
+    // console.log(newArray);
+    // newArray.forEach(item => {
+    //   const modArray = item[1];
+    //   cardsEntryPoint.appendChild(newCard(modArray));
+    // });
   })
   .catch(error => {
     console.log("The data was not returned", error);
