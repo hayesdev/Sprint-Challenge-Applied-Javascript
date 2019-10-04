@@ -59,9 +59,6 @@ axios
     newCardData.javascript.forEach(item => {
       cardsEntryPoint.appendChild(newCard(item));
     });
-    newCardData.javascript.forEach(item => {
-      cardsEntryPoint.appendChild(newCard(item));
-    });
     newCardData.bootstrap.forEach(item => {
       cardsEntryPoint.appendChild(newCard(item));
     });
